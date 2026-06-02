@@ -98,13 +98,13 @@ export default function Dashboard() {
           sx={{ 
             fontWeight: 800, 
             fontFamily: "'Outfit', sans-serif",
-            color: '#f8fafc',
+            color: 'var(--color-text-primary)',
             mb: 1
           }}
         >
           Operational Overview
         </Typography>
-        <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+        <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
           Real-time summary of catalog inventory, registered buyers, and purchase transactions.
         </Typography>
       </Box>
@@ -150,7 +150,7 @@ export default function Dashboard() {
           sx={{ 
             fontWeight: 700, 
             fontFamily: "'Outfit', sans-serif",
-            color: '#f8fafc',
+            color: 'var(--color-text-primary)',
             mb: 2,
             display: 'flex',
             alignItems: 'center',
@@ -175,17 +175,16 @@ export default function Dashboard() {
         ) : (
           <TableContainer 
             component={Paper} 
-            className="glass-panel"
-            sx={{ boxShadow: 'none' }}
+            sx={{ boxShadow: 'none', border: '1px solid var(--color-border)' }}
           >
             <Table sx={{ minWidth: 650 }}>
-              <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.2)' }}>
+              <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.04)' }}>
                 <TableRow>
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Product Name</TableCell>
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>SKU Code</TableCell>
-                  <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Unit Price</TableCell>
-                  <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Current Stock</TableCell>
-                  <TableCell align="center" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Urgency</TableCell>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Product Name</TableCell>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>SKU Code</TableCell>
+                  <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Unit Price</TableCell>
+                  <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Current Stock</TableCell>
+                  <TableCell align="center" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Urgency</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -194,11 +193,11 @@ export default function Dashboard() {
                     key={row.id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row" sx={{ color: '#fff', fontWeight: 500 }}>
+                    <TableCell component="th" scope="row" sx={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
                       {row.name}
                     </TableCell>
-                    <TableCell sx={{ color: 'rgba(255,255,255,0.6)' }}>{row.sku}</TableCell>
-                    <TableCell align="right" sx={{ color: '#fff' }}>${row.price.toFixed(2)}</TableCell>
+                    <TableCell sx={{ color: 'var(--color-text-secondary)' }}>{row.sku}</TableCell>
+                    <TableCell align="right" sx={{ color: 'var(--color-text-primary)' }}>${row.price.toFixed(2)}</TableCell>
                     <TableCell align="right" sx={{ color: '#f87171', fontWeight: 600 }}>{row.quantity}</TableCell>
                     <TableCell align="center">
                       <Chip 

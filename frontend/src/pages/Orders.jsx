@@ -222,13 +222,13 @@ export default function Orders() {
             sx={{ 
               fontWeight: 800, 
               fontFamily: "'Outfit', sans-serif",
-              color: '#f8fafc',
+              color: 'var(--color-text-primary)',
               mb: 1
             }}
           >
             Orders Log
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+          <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
             Record checkout logs, verify stock transactions, and cancel order requests.
           </Typography>
         </Box>
@@ -249,11 +249,11 @@ export default function Orders() {
       ) : error ? (
         <Alert severity="error" sx={{ borderRadius: 2 }}>{error}</Alert>
       ) : orders.length === 0 ? (
-        <Paper className="glass-panel" sx={{ p: 5, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.7)', mb: 1 }}>
+        <Paper sx={{ p: 5, textAlign: 'center', border: '1px solid var(--color-border)', boxShadow: 'none' }}>
+          <Typography variant="h6" sx={{ color: 'var(--color-text-primary)', mb: 1 }}>
             No purchase records found.
           </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.4)', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)', mb: 3 }}>
             Initialize transaction processing by writing an order.
           </Typography>
           <Button variant="outlined" onClick={handleOpenCreate}>
@@ -261,16 +261,16 @@ export default function Orders() {
           </Button>
         </Paper>
       ) : (
-        <TableContainer component={Paper} className="glass-panel" sx={{ boxShadow: 'none' }}>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid var(--color-border)' }}>
           <Table sx={{ minWidth: 650 }}>
-            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.2)' }}>
+            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.04)' }}>
               <TableRow>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Order ID</TableCell>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Customer Name</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Total Items</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Total Amount</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Checkout Date</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Actions</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Order ID</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Customer Name</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Total Items</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Total Amount</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Checkout Date</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -283,18 +283,18 @@ export default function Orders() {
                     sx={{ 
                       cursor: 'pointer',
                       '&:last-child td, &:last-child th': { border: 0 },
-                      '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.02)' }
+                      '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.02)' }
                     }}
                   >
-                    <TableCell sx={{ color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>#{row.id}</TableCell>
-                    <TableCell component="th" scope="row" sx={{ color: '#fff', fontWeight: 600 }}>
+                    <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>#{row.id}</TableCell>
+                    <TableCell component="th" scope="row" sx={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>
                       {row.customer_name}
                     </TableCell>
-                    <TableCell align="right" sx={{ color: '#fff' }}>{totalItemsCount}</TableCell>
-                    <TableCell align="right" sx={{ color: 'primary.light', fontWeight: 700 }}>
+                    <TableCell align="right" sx={{ color: 'var(--color-text-primary)' }}>{totalItemsCount}</TableCell>
+                    <TableCell align="right" sx={{ color: 'primary.main', fontWeight: 700 }}>
                       ${row.total_amount.toFixed(2)}
                     </TableCell>
-                    <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.5)' }}>
+                    <TableCell align="right" sx={{ color: 'var(--color-text-secondary)' }}>
                       {new Date(row.created_at).toLocaleString()}
                     </TableCell>
                     <TableCell align="right">
@@ -343,7 +343,7 @@ export default function Orders() {
           
           {/* Select Customer */}
           <Box sx={{ mb: 4, mt: 1 }}>
-            <Typography variant="subtitle2" sx={{ color: 'rgba(255,255,255,0.6)', mb: 1, fontWeight: 600 }}>
+            <Typography variant="subtitle2" sx={{ color: 'var(--color-text-secondary)', mb: 1, fontWeight: 600 }}>
               Select Purchasing Customer
             </Typography>
             {customers.length === 0 ? (
@@ -372,12 +372,12 @@ export default function Orders() {
             )}
           </Box>
 
-          <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', mb: 3 }} />
+          <Divider sx={{ borderColor: 'var(--color-border)', mb: 3 }} />
 
           {/* Cart Items List */}
           <Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}>
+              <Typography variant="subtitle2" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>
                 Products checkout list
               </Typography>
               <Button 
@@ -432,10 +432,10 @@ export default function Orders() {
                     <Grid item xs={4} sm={2} sx={{ pl: { sm: 1 } }}>
                       {selectedProdDetails && (
                         <Box sx={{ textAlign: 'center' }}>
-                          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.4)', display: 'block' }}>
+                          <Typography variant="caption" sx={{ color: 'var(--color-text-secondary)', display: 'block' }}>
                             Subtotal
                           </Typography>
-                          <Typography variant="body2" sx={{ fontWeight: 600, color: 'primary.light' }}>
+                          <Typography variant="body2" sx={{ fontWeight: 600, color: 'primary.main' }}>
                             ${(selectedProdDetails.price * (parseInt(item.quantity, 10) || 0)).toFixed(2)}
                           </Typography>
                         </Box>
@@ -456,14 +456,14 @@ export default function Orders() {
             )}
           </Box>
 
-          <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', my: 3 }} />
+          <Divider sx={{ borderColor: 'var(--color-border)', my: 3 }} />
 
           {/* Cart Live Total Summary */}
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 2 }}>
-            <Typography variant="subtitle1" sx={{ color: 'rgba(255,255,255,0.5)', fontWeight: 600 }}>
+            <Typography variant="subtitle1" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>
               Calculated Total Price:
             </Typography>
-            <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.light', fontFamily: "'Outfit', sans-serif" }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main', fontFamily: "'Outfit', sans-serif" }}>
               ${calculateLiveTotal().toFixed(2)}
             </Typography>
           </Box>
@@ -500,7 +500,7 @@ export default function Orders() {
         </DialogTitle>
         <DialogContent>
           {apiError && <Alert severity="error" sx={{ mb: 2.5, borderRadius: 2 }}>{apiError}</Alert>}
-          <DialogContentText sx={{ color: 'rgba(255,255,255,0.7)' }}>
+          <DialogContentText sx={{ color: 'var(--color-text-secondary)' }}>
             Are you sure you want to cancel and delete Order <strong>#{selectedOrder?.id}</strong>?
             <br />
             <span style={{ color: '#34d399', display: 'block', marginTop: '10px', fontWeight: 600 }}>

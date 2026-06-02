@@ -165,13 +165,13 @@ export default function Products() {
             sx={{ 
               fontWeight: 800, 
               fontFamily: "'Outfit', sans-serif",
-              color: '#f8fafc',
+              color: 'var(--color-text-primary)',
               mb: 1
             }}
           >
             Product Catalog
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+          <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
             Manage stock list items, SKU definitions, catalog pricing, and quantity allocations.
           </Typography>
         </Box>
@@ -193,11 +193,11 @@ export default function Products() {
       ) : error ? (
         <Alert severity="error" sx={{ borderRadius: 2 }}>{error}</Alert>
       ) : products.length === 0 ? (
-        <Paper className="glass-panel" sx={{ p: 5, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.7)', mb: 1 }}>
+        <Paper sx={{ p: 5, textAlign: 'center', border: '1px solid var(--color-border)', boxShadow: 'none' }}>
+          <Typography variant="h6" sx={{ color: 'var(--color-text-primary)', mb: 1 }}>
             No products found in inventory.
           </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.4)', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)', mb: 3 }}>
             Get started by adding your first product definition.
           </Typography>
           <Button variant="outlined" onClick={handleOpenAdd}>
@@ -205,15 +205,15 @@ export default function Products() {
           </Button>
         </Paper>
       ) : (
-        <TableContainer component={Paper} className="glass-panel" sx={{ boxShadow: 'none' }}>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid var(--color-border)' }}>
           <Table sx={{ minWidth: 650 }}>
-            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.2)' }}>
+            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.04)' }}>
               <TableRow>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>SKU</TableCell>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Product Name</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Unit Price</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>In Stock</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Actions</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>SKU</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Product Name</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Unit Price</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>In Stock</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -222,14 +222,14 @@ export default function Products() {
                   key={row.id}
                   sx={{ 
                     '&:last-child td, &:last-child th': { border: 0 },
-                    '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.02)' }
+                    '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.02)' }
                   }}
                 >
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.6)', fontWeight: 600 }}>{row.sku}</TableCell>
-                  <TableCell component="th" scope="row" sx={{ color: '#fff', fontWeight: 500 }}>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>{row.sku}</TableCell>
+                  <TableCell component="th" scope="row" sx={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
                     {row.name}
                   </TableCell>
-                  <TableCell align="right" sx={{ color: '#fff' }}>${row.price.toFixed(2)}</TableCell>
+                  <TableCell align="right" sx={{ color: 'var(--color-text-primary)' }}>${row.price.toFixed(2)}</TableCell>
                   <TableCell 
                     align="right" 
                     sx={{ 
@@ -260,10 +260,10 @@ export default function Products() {
         onClose={() => setFormOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#1e293b',
+            bgcolor: 'var(--color-bg)',
             backgroundImage: 'none',
             borderRadius: 3,
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            border: '1px solid var(--color-border)'
           }
         }}
       >
@@ -335,10 +335,10 @@ export default function Products() {
         onClose={() => setDeleteOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#1e293b',
+            bgcolor: 'var(--color-bg)',
             backgroundImage: 'none',
             borderRadius: 3,
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            border: '1px solid var(--color-border)'
           }
         }}
       >
@@ -347,7 +347,7 @@ export default function Products() {
         </DialogTitle>
         <DialogContent>
           {apiError && <Alert severity="error" sx={{ mb: 2.5, borderRadius: 2 }}>{apiError}</Alert>}
-          <DialogContentText sx={{ color: 'rgba(255,255,255,0.7)' }}>
+          <DialogContentText sx={{ color: 'var(--color-text-secondary)' }}>
             Are you sure you want to delete product <strong>{selectedProduct?.name}</strong> (SKU: {selectedProduct?.sku})? This action cannot be undone.
           </DialogContentText>
         </DialogContent>

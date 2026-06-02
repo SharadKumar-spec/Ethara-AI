@@ -136,13 +136,13 @@ export default function Customers() {
             sx={{ 
               fontWeight: 800, 
               fontFamily: "'Outfit', sans-serif",
-              color: '#f8fafc',
+              color: 'var(--color-text-primary)',
               mb: 1
             }}
           >
             Customers Directory
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+          <Typography variant="body1" sx={{ color: 'var(--color-text-secondary)' }}>
             Register new customers, view buyer information, or manage accounts details.
           </Typography>
         </Box>
@@ -164,11 +164,11 @@ export default function Customers() {
       ) : error ? (
         <Alert severity="error" sx={{ borderRadius: 2 }}>{error}</Alert>
       ) : customers.length === 0 ? (
-        <Paper className="glass-panel" sx={{ p: 5, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.7)', mb: 1 }}>
+        <Paper sx={{ p: 5, textAlign: 'center', border: '1px solid var(--color-border)', boxShadow: 'none' }}>
+          <Typography variant="h6" sx={{ color: 'var(--color-text-primary)', mb: 1 }}>
             No registered customers found.
           </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.4)', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'var(--color-text-secondary)', mb: 3 }}>
             Add customers to start placing orders.
           </Typography>
           <Button variant="outlined" onClick={handleOpenAdd}>
@@ -176,16 +176,16 @@ export default function Customers() {
           </Button>
         </Paper>
       ) : (
-        <TableContainer component={Paper} className="glass-panel" sx={{ boxShadow: 'none' }}>
+        <TableContainer component={Paper} sx={{ boxShadow: 'none', border: '1px solid var(--color-border)' }}>
           <Table sx={{ minWidth: 650 }}>
-            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.2)' }}>
+            <TableHead sx={{ bgcolor: 'rgba(0, 0, 0, 0.04)' }}>
               <TableRow>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>ID</TableCell>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Full Name</TableCell>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Email Address</TableCell>
-                <TableCell sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Phone Number</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Registration Date</TableCell>
-                <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>Actions</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>ID</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Full Name</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Email Address</TableCell>
+                <TableCell sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Phone Number</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Registration Date</TableCell>
+                <TableCell align="right" sx={{ color: 'var(--color-text-secondary)', fontWeight: 600 }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -194,16 +194,16 @@ export default function Customers() {
                   key={row.id}
                   sx={{ 
                     '&:last-child td, &:last-child th': { border: 0 },
-                    '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.02)' }
+                    '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.02)' }
                   }}
                 >
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.4)' }}>#{row.id}</TableCell>
-                  <TableCell component="th" scope="row" sx={{ color: '#fff', fontWeight: 650 }}>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)' }}>#{row.id}</TableCell>
+                  <TableCell component="th" scope="row" sx={{ color: 'var(--color-text-primary)', fontWeight: 650 }}>
                     {row.full_name}
                   </TableCell>
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.85)' }}>{row.email}</TableCell>
-                  <TableCell sx={{ color: 'rgba(255,255,255,0.6)' }}>{row.phone || '—'}</TableCell>
-                  <TableCell align="right" sx={{ color: 'rgba(255,255,255,0.5)' }}>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)' }}>{row.email}</TableCell>
+                  <TableCell sx={{ color: 'var(--color-text-secondary)' }}>{row.phone || '—'}</TableCell>
+                  <TableCell align="right" sx={{ color: 'var(--color-text-secondary)' }}>
                     {new Date(row.created_at).toLocaleDateString()}
                   </TableCell>
                   <TableCell align="right">
@@ -224,10 +224,10 @@ export default function Customers() {
         onClose={() => setFormOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#1e293b',
+            bgcolor: 'var(--color-bg)',
             backgroundImage: 'none',
             borderRadius: 3,
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            border: '1px solid var(--color-border)'
           }
         }}
       >
@@ -286,10 +286,10 @@ export default function Customers() {
         onClose={() => setDeleteOpen(false)}
         PaperProps={{
           sx: {
-            bgcolor: '#1e293b',
+            bgcolor: 'var(--color-bg)',
             backgroundImage: 'none',
             borderRadius: 3,
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            border: '1px solid var(--color-border)'
           }
         }}
       >
@@ -298,7 +298,7 @@ export default function Customers() {
         </DialogTitle>
         <DialogContent>
           {apiError && <Alert severity="error" sx={{ mb: 2.5, borderRadius: 2 }}>{apiError}</Alert>}
-          <DialogContentText sx={{ color: 'rgba(255,255,255,0.7)' }}>
+          <DialogContentText sx={{ color: 'var(--color-text-secondary)' }}>
             Are you sure you want to delete the profile for <strong>{selectedCustomer?.full_name}</strong>?
             <br />
             <span style={{ color: '#f87171', display: 'block', marginTop: '10px', fontWeight: 600 }}>

@@ -12,28 +12,28 @@ import Orders from './pages/Orders';
 // Custom MUI Dark Theme definition for visual excellence
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-      main: '#6366f1', // Indigo
-      light: '#818cf8',
-      dark: '#4f46e5',
+      main: '#0F2D52', // Navy Blue
+      light: '#1e487d',
+      dark: '#081a30',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#0d9488', // Teal
-      light: '#2dd4bf',
-      dark: '#0f766e',
+      main: '#14B8A6', // Teal Green
+      light: '#3dd4c5',
+      dark: '#0f8a7c',
       contrastText: '#ffffff',
     },
     background: {
-      default: '#0b0f19', // Deep slate black
-      paper: '#1e293b',   // Card slate
+      default: '#FFFFFF',
+      paper: '#F5F7FA',
     },
     text: {
-      primary: '#f8fafc',
-      secondary: '#94a3b8',
+      primary: '#2D2D2D',
+      secondary: '#6B6E70',
     },
-    divider: 'rgba(255, 255, 255, 0.08)',
+    divider: 'rgba(0, 0, 0, 0.08)',
   },
   typography: {
     fontFamily: "'Inter', sans-serif",
@@ -66,7 +66,7 @@ const theme = createTheme({
           },
         },
         containedPrimary: {
-          background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
+          background: 'var(--color-primary)',
         },
       },
     },
@@ -74,17 +74,17 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          backgroundColor: '#1e293b',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+          backgroundColor: '#FFFFFF',
+          border: '1px solid var(--color-border)',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03)',
         },
       },
     },
     MuiDialog: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#1e293b',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          backgroundColor: '#FFFFFF',
+          border: '1px solid var(--color-border)',
         },
       },
     },
@@ -98,10 +98,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(255, 255, 255, 0.1)',
+            borderColor: 'rgba(0, 0, 0, 0.15)',
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'rgba(255, 255, 255, 0.25)',
+            borderColor: 'rgba(0, 0, 0, 0.3)',
           },
         },
       },
