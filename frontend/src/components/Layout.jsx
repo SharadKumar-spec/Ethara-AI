@@ -216,10 +216,10 @@ export default function Layout({ children }) {
           width: { md: `calc(100% - ${drawerWidth}px)` },
           minHeight: '100vh',
           display: 'flex',
-          flexDirection: 'column',
-          pt: { xs: 12, sm: 14 } // Fixed alignment / padding for AppBar height
+          flexDirection: 'column'
         }}
       >
+        <Toolbar /> {/* Spacer for fixed AppBar */}
         <Box className="page-fade-in" sx={{ flexGrow: 1 }}>
           {children}
         </Box>
