@@ -46,7 +46,7 @@ export default function Layout({ children }) {
   ];
 
   const drawerContent = (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: '#0f172a' }}>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', bgcolor: 'var(--color-primary)' }}>
       <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', py: 2 }}>
         <Avatar 
           sx={{ 
@@ -75,7 +75,7 @@ export default function Layout({ children }) {
           Nexora
         </Typography>
       </Toolbar>
-      <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)' }} />
+      <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)' }} />
       <List sx={{ px: 2, py: 3, flexGrow: 1 }}>
         {menuItems.map((item) => {
           const active = location.pathname === item.path;
@@ -126,16 +126,16 @@ export default function Layout({ children }) {
   );
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#0b0f19' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'var(--color-bg)' }}>
       <AppBar
         position="fixed"
         sx={{
           width: { md: `calc(100% - ${drawerWidth}px)` },
           ml: { md: `${drawerWidth}px` },
-          bgcolor: 'rgba(11, 15, 25, 0.7)',
+          bgcolor: 'rgba(255, 255, 255, 0.85)',
           backdropFilter: 'blur(8px)',
-          boxShadow: 'none',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+          borderBottom: '1px solid var(--color-border)',
           zIndex: (theme) => theme.zIndex.drawer + 1
         }}
       >
@@ -156,10 +156,10 @@ export default function Layout({ children }) {
             sx={{ 
               fontWeight: 700, 
               fontFamily: "'Outfit', sans-serif",
-              color: '#f8fafc' 
+              color: 'var(--color-primary)' 
             }}
           >
-            {menuItems.find(item => item.path === location.pathname)?.text || 'StockFlow'}
+            {menuItems.find(item => item.path === location.pathname)?.text || 'Nexora'}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -183,7 +183,7 @@ export default function Layout({ children }) {
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth,
-              borderRight: '1px solid rgba(255,255,255,0.06)'
+              borderRight: 'none'
             },
           }}
         >
@@ -198,7 +198,7 @@ export default function Layout({ children }) {
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth,
-              borderRight: '1px solid rgba(255,255,255,0.06)'
+              borderRight: 'none'
             },
           }}
           open
@@ -217,7 +217,7 @@ export default function Layout({ children }) {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          pt: { xs: 10, sm: 11 } // Adjust for AppBar height
+          pt: { xs: 12, sm: 14 } // Fixed alignment / padding for AppBar height
         }}
       >
         <Box className="page-fade-in" sx={{ flexGrow: 1 }}>
